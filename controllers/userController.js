@@ -66,5 +66,34 @@ const loginUser = async (req, res) => {
 }
 
 
+const userAuthentication = async (req, res) => {
+    try {
+        const token = req.headers.authorization.split(" ")[1]
+        const verifyToken = jwt.verify(token, process.env.JWT_SECRET)
+        const queryId = { _id: verifyToken.id }
+        const user = await User.findOne(queryId).lean();
+        if (!user) {
+            return res.status(404).send({
+                success: false,
+                message: "User Not found"
+            })
+        }
+        // const { password, ...safeUser } = user
+        res.status(200).send({
+            success: true,
+            message: "User data successfully",
+            data: user.email
+        })
 
-module.exports = { registerUser, loginUser };
+    } catch (error) {
+        console.log(error)
+        res.status(500).send({
+            success: false,
+            message: "User Not found",
+            error
+        })
+    }
+}
+
+
+module.exports = { registerUser, loginUser, userAuthentication };
