@@ -96,4 +96,5 @@ const userAuthentication = async (req, res) => {
 }
 
 
+
 module.exports = { registerUser, loginUser, userAuthentication };
