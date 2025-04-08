@@ -8,7 +8,8 @@ const userSchma = new mongoose.Schema({
     phone_number: { type: Number },
     address: { type: String },
     gender: { type: String },
-    date_of_birth: { type: String }
+    date_of_birth: { type: String },
+    role: { type: String }
 }, { timestamps: true });
 
 const User = mongoose.model("User", userSchma)

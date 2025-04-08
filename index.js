@@ -5,7 +5,7 @@ const cors = require('cors')
 const connectDB = require('./config/db')
 const userRoutes = require('./routes/userRoutes')
 const userProfileRoutes = require('./routes/userProfileRoutes')
-
+const isRoleManagement = require('./routes/dashboardRoutes')
 
 const app = express();
 dotenv.config();
@@ -21,7 +21,7 @@ app.use(express.json())
 
 app.use('/api/user', userRoutes);
 app.use('/api/profile', userProfileRoutes)
-
+app.use('/api/dashboard', isRoleManagement)
 
 app.get('/', async (req, res) => {
     res.send('EcoForce server running')
