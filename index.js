@@ -23,6 +23,7 @@ app.use('/api/user', userRoutes);
 app.use('/api/profile', userProfileRoutes)
 app.use('/api/dashboard', isRoleManagement)
 
+
 app.get('/', async (req, res) => {
     res.send('EcoForce server running')
 })
