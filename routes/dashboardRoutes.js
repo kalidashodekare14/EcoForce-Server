@@ -9,4 +9,5 @@ router.get('/events_management_data', eventsManagementData)
 router.post('/events_management', eventManagement)
 
 
+
 module.exports = router
